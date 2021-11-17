@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src="/pokeball.png" className="App-logo" alt="logo" />
-        <p>Pokedex</p>
+        <p>Pokédex</p>
       </header>
     </div>
   )
