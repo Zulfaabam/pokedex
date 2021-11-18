@@ -37,8 +37,8 @@ export default function Pokedex(props) {
         {loading ? (
           <h2>Loading...</h2>
         ) : (
-          data.map((pokemon, index) => (
-            <div key={index} className="pokedex-box">
+          data.map((pokemon) => (
+            <div key={pokemon.id} className="pokedex-box">
               <NavLink
                 to={`/pokedex/${pokemon.id}`}
                 onClick={() => history.push(`/pokedex/${pokemon.id}`)}

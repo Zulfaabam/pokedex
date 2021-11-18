@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useParams } from 'react-router'
 
-export default function Pokemon(props) {
+export default function Pokemon() {
   const [data, setData] = useState([])
-  const { match } = props
-  const { params } = match
-  const { pokemonId } = params
+  const { pokemonId } = useParams()
 
   useEffect(() => {
     axios

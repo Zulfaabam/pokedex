@@ -6,10 +6,13 @@ import BottomNav from './components/BottomNav'
 import Items from './components/Items'
 import About from './components/About'
 import Pokemon from './components/Pokemon'
+import { createBrowserHistory } from 'history'
+
+const history = createBrowserHistory()
 
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div className="app">
         <Routes>
           {/* <Route path="/" element={<Navigate replace to="/path" />} /> */}
