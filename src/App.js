@@ -7,6 +7,7 @@ import Items from './components/Items'
 import About from './components/About'
 import Pokemon from './components/Pokemon'
 import { createBrowserHistory } from 'history'
+import Item from './components/Item'
 
 const history = createBrowserHistory()
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/pokedex" element={<Pokedex />} />
           <Route path="/pokedex/:pokemonId" element={<Pokemon />} />
           <Route path="/items" element={<Items />} />
+          <Route path="/items/:itemId" element={<Item />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <footer>

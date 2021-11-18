@@ -1,0 +1,29 @@
+.items h1 {
+  text-align: center;
+}
+
+.items-container {
+  margin-top: 1rem;
+  padding-bottom: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-gap: 2rem 0.75rem;
+}
+
+.items-box {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.pkmn-num {
+  color: #a3a3a3;
+}
+
+.pkmn-name {
+  color: var(--blue-dark);
+  font-weight: 600;
+  text-transform: capitalize;
+}

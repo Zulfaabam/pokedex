@@ -26,29 +26,35 @@ export default function Pokemon() {
       <h1>{data.name}</h1>
       {/* <img src={data.sprites.front_default} alt={data.name}></img> */}
       <div className="pkmn-data-wrapper">
-        <h2>Pokedex Data</h2>
-        {data.types.map((item, index) => (
-          <p key={index}>{item.type.name}</p>
-        ))}
-        <p>Height: {data.height}</p>
-        <p>Weight: {data.weight}</p>
-        {data.abilities.map((item, index) => (
-          <p key={index}>
-            {item.is_hidden
-              ? `${item.ability.name} (Hidden)`
-              : item.ability.name}
-          </p>
-        ))}
-        <h2>Base Stats</h2>
-        {data.stats.map((item, index) => (
-          <p key={index}>
-            {item.stat.name}: {item.base_stat}
-          </p>
-        ))}
-        <h2>Moves</h2>
-        {data.moves.map((item, index) => (
-          <p key={index}>{item.move.name}</p>
-        ))}
+        <div className="pokedex-data-wrapper">
+          <h2>Pokedex Data</h2>
+          {data.types.map((item, index) => (
+            <p key={index}>{item.type.name}</p>
+          ))}
+          <p>Height: {data.height}</p>
+          <p>Weight: {data.weight}</p>
+          {data.abilities.map((item, index) => (
+            <p key={index}>
+              {item.is_hidden
+                ? `${item.ability.name} (Hidden)`
+                : item.ability.name}
+            </p>
+          ))}
+        </div>
+        <div className="base-stats-wrapper">
+          <h2>Base Stats</h2>
+          {data.stats.map((item, index) => (
+            <p key={index}>
+              {item.stat.name}: {item.base_stat}
+            </p>
+          ))}
+        </div>
+        <div className="moves-wrapper">
+          <h2>Moves</h2>
+          {data.moves.map((item, index) => (
+            <p key={index}>{item.move.name}</p>
+          ))}
+        </div>
       </div>
     </div>
   )
