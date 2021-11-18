@@ -36,14 +36,14 @@ export default function Pokedex() {
         {loading ? (
           <h2>Loading...</h2>
         ) : (
-          data.map((item, index) => (
+          data.map((pokemon, index) => (
             <div key={index} className="pokedex-box">
-              <NavLink to={`/${item.name}`}>
-                <img src={item.sprites.front_default} alt={item.name} />
+              <NavLink to={`/${pokemon.name}`}>
+                <img src={pokemon.sprites.front_default} alt={pokemon.name} />
               </NavLink>
-              <p className="pkmn-num">{`#${item.id}`}</p>
-              <NavLink to={`/${item.name}`} className="link pkmn-name">
-                {item.name}
+              <p className="pkmn-num">{`#${pokemon.id}`}</p>
+              <NavLink to={`/${pokemon.name}`} className="link pkmn-name">
+                {pokemon.name}
               </NavLink>
               {/* <p>{item.types[0].type.name}</p> */}
             </div>

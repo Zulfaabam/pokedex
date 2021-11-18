@@ -5,6 +5,7 @@ import Pokedex from './components/Pokedex'
 import BottomNav from './components/BottomNav'
 import Items from './components/Items'
 import About from './components/About'
+import Details from './components/Details'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/pokedex" element={<Pokedex />} />
           <Route path="/items" element={<Items />} />
           <Route path="/about" element={<About />} />
+          <Route path="/details" element={<Details />} />
         </Routes>
         <footer>
           <BottomNav />
