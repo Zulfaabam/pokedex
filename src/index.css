@@ -6,3 +6,23 @@
   box-sizing: border-box;
   font-family: 'Fira Sans', sans-serif;
 }
+
+:root {
+  --blue-dark: #2769be;
+  --blue-light: #61dafb;
+  --gray: #404040;
+  --trans: all 250ms ease-in-out;
+}
+
+/* .app {
+  height: 100vh;
+} */
+
+.link {
+  text-decoration: none;
+  transition: var(--trans);
+}
+
+.grid-container {
+  max-width: 1220px;
+}
