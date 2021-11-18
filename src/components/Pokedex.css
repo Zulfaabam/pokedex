@@ -1,6 +1,6 @@
 .pokedex {
   /* padding: 2rem calc(1rem + 15vmin); */
-  margin: 2rem auto;
+  margin: 2rem auto auto auto;
 }
 
 .pokedex h1 {
