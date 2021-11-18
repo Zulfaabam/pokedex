@@ -3,9 +3,10 @@ import axios from 'axios'
 import './Pokedex.css'
 import { NavLink } from 'react-router-dom'
 
-export default function Pokedex() {
+export default function Pokedex(props) {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
+  const { history } = props
 
   useEffect(() => {
     setLoading(true)
@@ -38,11 +39,18 @@ export default function Pokedex() {
         ) : (
           data.map((pokemon, index) => (
             <div key={index} className="pokedex-box">
-              <NavLink to={`/${pokemon.name}`}>
+              <NavLink
+                to={`/pokedex/${pokemon.id}`}
+                onClick={() => history.push(`/pokedex/${pokemon.id}`)}
+              >
                 <img src={pokemon.sprites.front_default} alt={pokemon.name} />
               </NavLink>
               <p className="pkmn-num">{`#${pokemon.id}`}</p>
-              <NavLink to={`/${pokemon.name}`} className="link pkmn-name">
+              <NavLink
+                to={`/pokedex/${pokemon.id}`}
+                className="link pkmn-name"
+                onClick={() => history.push(`/pokedex/${pokemon.id}`)}
+              >
                 {pokemon.name}
               </NavLink>
               {/* <p>{item.types[0].type.name}</p> */}
