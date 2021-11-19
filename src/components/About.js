@@ -8,7 +8,11 @@ export default function About() {
       <p>
         This Pokedex App was made to fulfill Final Assignment of Mobile Device
         Programming Practice. This App was created with React PWA technology,
-        using <a href="https://pokeapi.co/">PokeAPI</a> to get the Pokemon data.
+        using{' '}
+        <a href="https://pokeapi.co/" target="_blank" rel="noreferrer">
+          PokeAPI
+        </a>{' '}
+        to get the Pokemon data.
       </p>
       <h2>About Author</h2>
       <img
