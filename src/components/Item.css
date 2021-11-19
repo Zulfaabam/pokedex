@@ -1,5 +1,8 @@
 .item {
   margin: 2rem auto;
+  font-size: calc(10px + 2vmin);
+  padding: 0rem 1rem 5rem 1rem;
+  max-width: 768px;
 }
 
 .item h1 {
@@ -18,7 +21,6 @@
 }
 
 .item-data-wrapper {
-  padding: 0rem 1rem 5rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

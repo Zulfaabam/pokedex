@@ -16,7 +16,6 @@ function App() {
     <Router history={history}>
       <div className="app">
         <Routes>
-          {/* <Route path="/" element={<Navigate replace to="/path" />} /> */}
           <Route path="/" element={<Homepage />} />
           <Route path="/pokedex" element={<Pokedex />} />
           <Route path="/pokedex/:pokemonId" element={<Pokemon />} />

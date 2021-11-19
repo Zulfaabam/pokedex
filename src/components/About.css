@@ -7,8 +7,7 @@
   max-width: 768px;
 }
 
-.about h1,
-h2 {
+.about h1 {
   margin-bottom: 0.5rem;
   color: var(--blue-dark);
 }
