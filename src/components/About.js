@@ -17,7 +17,8 @@ export default function About() {
       />
       <p>
         My name is Zulfa Fatah Akbar Ahmad from group 34 PMDP. I am a Computer
-        Engineering student at Diponegoro University.
+        Engineering student at Diponegoro University. Passionate on Front-end
+        Developer.
       </p>
     </div>
   )
