@@ -4,7 +4,7 @@ import './Pokedex.css'
 import { NavLink } from 'react-router-dom'
 
 export default function Pokedex(props) {
-  const [data, setData] = useState([])
+  const [pokemon, setPokemon] = useState([])
   const [loading, setLoading] = useState(false)
   const { history } = props
 
@@ -22,7 +22,7 @@ export default function Pokedex(props) {
       })
       .then((results) => {
         setLoading(false)
-        setData(results.map((res) => res.data))
+        setPokemon(results.map((res) => res.data))
       })
       .catch((err) => {
         console.log(err)
@@ -37,7 +37,7 @@ export default function Pokedex(props) {
         {loading ? (
           <h2>Loading...</h2>
         ) : (
-          data.map((pokemon) => (
+          pokemon.map((pokemon) => (
             <div key={pokemon.id} className="pokedex-box">
               <NavLink
                 to={`/pokedex/${pokemon.id}`}

@@ -1,7 +1,27 @@
 .pokemon {
-  margin: 2rem auto auto auto;
+  margin: 2rem auto;
+}
+
+.pokemon h1 {
+  color: var(--blue-dark);
+  text-transform: capitalize;
+}
+
+.name-wrapper {
+  width: 100%;
+}
+
+.name-wrapper img {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
 }
 
 .pkmn-data-wrapper {
-  padding-bottom: 5rem;
+  padding: 0rem 1rem 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
 }

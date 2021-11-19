@@ -1,3 +1,6 @@
+.items {
+  margin: 2rem auto;
+}
 .items h1 {
   text-align: center;
 }
@@ -7,7 +10,7 @@
   padding-bottom: 5rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  grid-gap: 2rem 0.75rem;
+  grid-gap: 3rem 0.75rem;
 }
 
 .items-box {
@@ -18,11 +21,7 @@
   text-align: center;
 }
 
-.pkmn-num {
-  color: #a3a3a3;
-}
-
-.pkmn-name {
+.items-name {
   color: var(--blue-dark);
   font-weight: 600;
   text-transform: capitalize;

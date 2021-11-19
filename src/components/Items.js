@@ -47,7 +47,7 @@ export default function Items(props) {
               </NavLink>
               <NavLink
                 to={`/items/${item.id}`}
-                className="link pkmn-name"
+                className="link items-name"
                 onClick={() => history.push(`/items/${item.id}`)}
               >
                 {item.name}

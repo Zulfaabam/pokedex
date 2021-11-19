@@ -18,7 +18,8 @@
   height: 100vh;
 } */
 
-.link {
+.link,
+a {
   text-decoration: none;
   transition: var(--trans);
 }
