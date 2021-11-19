@@ -27,3 +27,9 @@
   align-items: flex-start;
   gap: 1rem;
 }
+
+@media (min-width: 768px) {
+  .item h1 {
+    text-align: center;
+  }
+}

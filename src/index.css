@@ -14,10 +14,6 @@
   --trans: all 250ms ease-in-out;
 }
 
-/* .app {
-  height: 100vh;
-} */
-
 .link,
 a {
   text-decoration: none;
@@ -26,4 +22,11 @@ a {
 
 .grid-container {
   max-width: 1220px;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

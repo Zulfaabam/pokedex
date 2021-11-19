@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
 import './Item.css'
+import { SpinnerCircular } from 'spinners-react'
 
 export default function Item() {
   const [item, setItem] = useState([])
@@ -40,7 +41,11 @@ export default function Item() {
       : item.effect_entries[0].effect
 
   if (loading) {
-    return <h2>Loading...</h2>
+    return (
+      <div className="loading">
+        <SpinnerCircular color="#2769be" />
+      </div>
+    )
   }
 
   if (error) {

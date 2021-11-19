@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
 import './Pokemon.css'
+import { SpinnerCircular } from 'spinners-react'
 
 const TYPE_COLORS = {
   bug: 'B1C12E',
@@ -59,13 +60,17 @@ export default function Pokemon() {
     //   })
   }, [pokemonId])
   // console.log(pokemonId)
-  console.log(pokemon)
+  // console.log(pokemon)
 
   const pic = `https://cdn.traction.one/pokedex/pokemon/${pokemonId}.png`
   const { types, stats, moves, abilities } = pokemon
 
   if (loading) {
-    return <h2>Loading...</h2>
+    return (
+      <div className="loading">
+        <SpinnerCircular color="#2769be" />
+      </div>
+    )
   }
 
   if (error) {

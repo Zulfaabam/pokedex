@@ -6,8 +6,8 @@ import BottomNav from './components/BottomNav'
 import Items from './components/Items'
 import About from './components/About'
 import Pokemon from './components/Pokemon'
-import { createBrowserHistory } from 'history'
 import Item from './components/Item'
+import { createBrowserHistory } from 'history'
 
 const history = createBrowserHistory()
 
