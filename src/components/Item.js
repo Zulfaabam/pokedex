@@ -30,14 +30,14 @@ export default function Item() {
   console.log(itemId)
   console.log(item)
 
-  const pic = item.sprites === undefined ? 'not found' : item.sprites.default
+  const pic = item.sprites === undefined ? 'Loading...' : item.sprites.default
   const desc =
     item.flavor_text_entries === undefined
-      ? 'not found'
+      ? 'Loading...'
       : item.flavor_text_entries[0].text
   const effect =
     item.effect_entries === undefined
-      ? 'not found'
+      ? 'Loading...'
       : item.effect_entries[0].effect
 
   if (loading) {
@@ -56,7 +56,7 @@ export default function Item() {
     <div className="item grid-container">
       <div className="item-title">
         <h1>
-          {item.name === undefined ? 'not found' : item.name.replace('-', ' ')}
+          {item.name === undefined ? 'Loading...' : item.name.replace('-', ' ')}
         </h1>
         <img src={pic} alt={`${item.name} pic`} />
       </div>

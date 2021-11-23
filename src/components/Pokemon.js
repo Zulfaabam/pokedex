@@ -110,7 +110,7 @@ export default function Pokemon() {
           <div>
             <strong>Ability: </strong>
             {abilities === undefined
-              ? 'not found'
+              ? 'Loading...'
               : abilities.map((item, index) => (
                   <p key={index}>
                     {item.is_hidden
@@ -130,7 +130,7 @@ export default function Pokemon() {
         <div className="data-box base-stats-wrapper">
           <h2>Base Stats</h2>
           {stats === undefined
-            ? 'not found'
+            ? 'Loading...'
             : stats.map((item, index) => (
                 <p key={index}>
                   <strong>{item.stat.name}: </strong>
@@ -142,7 +142,7 @@ export default function Pokemon() {
       <div className="data-box moves-wrapper">
         <h2>Moves</h2>
         {moves === undefined
-          ? 'not found'
+          ? 'Loading...'
           : moves.map((item, index) => <p key={index}>{item.move.name}</p>)}
       </div>
     </div>
