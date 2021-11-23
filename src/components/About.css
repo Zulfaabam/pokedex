@@ -1,6 +1,6 @@
 .about {
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 0 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
