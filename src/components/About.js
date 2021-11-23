@@ -21,7 +21,6 @@ export default function About() {
         // setError(err)
       }
     }
-
     fetchData()
   }, [])
   console.log(data)
@@ -39,16 +38,31 @@ export default function About() {
         to get the Pokemon data.
       </p>
       <h2>About Author</h2>
-      <img src={data.avatar_url} alt="author pic" />
+      <img
+        src={
+          data === undefined
+            ? 'https://avatars.githubusercontent.com/u/63113235?v=4'
+            : data.avatar_url
+        }
+        alt="author pic"
+      />
       <p>
-        My name is {data.name} from group 34 PMDP. I am a Computer Engineering
-        student at Diponegoro University. Passionate on Front-end Developer. Go
-        check My{' '}
-        <a href={data.html_url} target="_blank" rel="noreferrer">
+        My name is {data === undefined ? 'Zulfa Fatah Akbar Ahmad' : data.name}{' '}
+        from group 34 PMDP. I am a Computer Engineering student at Diponegoro
+        University. Passionate on Front-end Developer. Go check My{' '}
+        <a
+          href={data === undefined ? '#' : data.html_url}
+          target="_blank"
+          rel="noreferrer"
+        >
           Github
         </a>{' '}
         and My{' '}
-        <a href={data.blog} target="_blank" rel="noreferrer">
+        <a
+          href={data === undefined ? '#' : data.blog}
+          target="_blank"
+          rel="noreferrer"
+        >
           Website
         </a>{' '}
         for another project.
