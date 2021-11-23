@@ -1,30 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './About.css'
-import axios from 'axios'
 
 export default function About() {
-  const [data, setData] = useState()
-
-  useEffect(() => {
-    const fetchData = async () => {
-      // setLoading(true)
-      try {
-        const response = await axios.get(
-          `https://api.github.com/users/Zulfaabam`
-        )
-        if (response.status === 200) {
-          setData(response.data)
-          // setLoading(false)
-        }
-      } catch (err) {
-        // setLoading(true)
-        // setError(err)
-      }
-    }
-    fetchData()
-  }, [])
-  console.log(data)
-
   return (
     <div className="about grid-container">
       <h1>About App</h1>
@@ -39,30 +16,18 @@ export default function About() {
       </p>
       <h2>About Author</h2>
       <img
-        src={
-          data === undefined
-            ? 'https://avatars.githubusercontent.com/u/63113235?v=4'
-            : data.avatar_url
-        }
+        src="https://avatars.githubusercontent.com/u/63113235?v=4"
         alt="author pic"
       />
       <p>
-        My name is {data === undefined ? 'Zulfa Fatah Akbar Ahmad' : data.name}{' '}
-        from group 34 PMDP. I am a Computer Engineering student at Diponegoro
-        University. Passionate on Front-end Developer. Go check My{' '}
-        <a
-          href={data === undefined ? '#' : data.html_url}
-          target="_blank"
-          rel="noreferrer"
-        >
+        My name is Zulfa Fatah Akbar Ahmad from group 34 PMDP. I am a Computer
+        Engineering student at Diponegoro University. Passionate on Front-end
+        Developer. Go check My{' '}
+        <a href="https://github.com/Zulfaabam" target="_blank" rel="noreferrer">
           Github
         </a>{' '}
         and My{' '}
-        <a
-          href={data === undefined ? '#' : data.blog}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://abams.vercel.app/" target="_blank" rel="noreferrer">
           Website
         </a>{' '}
         for another project.
