@@ -26,7 +26,7 @@ export default function About() {
         <a href="https://github.com/Zulfaabam" target="_blank" rel="noreferrer">
           Github
         </a>{' '}
-        and My{' '}
+        or My{' '}
         <a href="https://abams.vercel.app/" target="_blank" rel="noreferrer">
           Website
         </a>{' '}
