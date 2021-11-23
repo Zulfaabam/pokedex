@@ -7,6 +7,7 @@ import { SpinnerCircular } from 'spinners-react'
 export default function Pokedex(props) {
   const [pokemon, setPokemon] = useState([])
   const [loading, setLoading] = useState(false)
+  const [filter, setFilter] = useState('')
   const { history } = props
 
   useEffect(() => {
@@ -31,6 +32,10 @@ export default function Pokedex(props) {
   }, [])
   //   console.log(data)
 
+  const handleSearchChange = (e) => {
+    setFilter(e.target.value)
+  }
+
   if (loading) {
     return (
       <div className="loading">
@@ -41,26 +46,37 @@ export default function Pokedex(props) {
 
   return (
     <div className="pokedex grid-container" id="pokedex">
-      <h1>Pokédex</h1>
+      <header className="header">
+        <h1>Pokédex</h1>
+        <input
+          type="text"
+          name="filter"
+          placeholder="Filter Pokemon"
+          onChange={handleSearchChange}
+        />
+      </header>
       <div className="pokedex-container">
-        {pokemon.map((pokemon) => (
-          <div key={pokemon.id} className="pokedex-box">
-            <NavLink
-              to={`/pokedex/${pokemon.id}`}
-              onClick={() => history.push(`/pokedex/${pokemon.id}`)}
-            >
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-            </NavLink>
-            <p className="pkmn-num">{`#${pokemon.id}`}</p>
-            <NavLink
-              to={`/pokedex/${pokemon.id}`}
-              className="link pkmn-name"
-              onClick={() => history.push(`/pokedex/${pokemon.id}`)}
-            >
-              {pokemon.name}
-            </NavLink>
-          </div>
-        ))}
+        {pokemon.map(
+          (pokemon) =>
+            pokemon.name.includes(filter) && (
+              <div key={pokemon.id} className="pokedex-box">
+                <NavLink
+                  to={`/pokedex/${pokemon.id}`}
+                  onClick={() => history.push(`/pokedex/${pokemon.id}`)}
+                >
+                  <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                </NavLink>
+                <p className="pkmn-num">{`#${pokemon.id}`}</p>
+                <NavLink
+                  to={`/pokedex/${pokemon.id}`}
+                  className="link pkmn-name"
+                  onClick={() => history.push(`/pokedex/${pokemon.id}`)}
+                >
+                  {pokemon.name}
+                </NavLink>
+              </div>
+            )
+        )}
       </div>
     </div>
   )

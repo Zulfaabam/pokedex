@@ -30,3 +30,23 @@
   font-weight: 600;
   text-transform: capitalize;
 }
+
+header {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header input {
+  border: 2px solid var(--blue-dark);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+header input:focus {
+  border: 2px solid var(--blue-light);
+  outline: 1px solid var(--blue-light);
+}
