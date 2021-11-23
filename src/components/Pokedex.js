@@ -13,7 +13,7 @@ export default function Pokedex(props) {
     setLoading(true)
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/`, {
-        params: { limit: 386 },
+        params: { limit: 151 },
       })
       .then((res) => {
         return res.data.results
