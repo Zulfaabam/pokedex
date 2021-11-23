@@ -58,7 +58,10 @@ export default function Item() {
         <h1>
           {item.name === undefined ? 'Loading...' : item.name.replace('-', ' ')}
         </h1>
-        <img src={pic} alt={`${item.name} pic`} />
+        <img
+          src={pic}
+          alt={`${item.name === undefined ? 'Loading' : item.name} pic`}
+        />
       </div>
       <div className="item-data-wrapper">
         <h2>Description:</h2>
