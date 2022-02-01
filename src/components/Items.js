@@ -16,7 +16,7 @@ export default function Items() {
 
   useEffect(() => {
     if (itemStatus === 'idle') {
-      dispatch(fetchItems(10))
+      dispatch(fetchItems(200))
     }
   }, [dispatch, itemStatus])
   // console.log(items)
