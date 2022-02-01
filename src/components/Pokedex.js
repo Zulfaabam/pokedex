@@ -15,12 +15,12 @@ export default function Pokedex(props) {
   const dispatch = useDispatch()
   const pokemons = useSelector(selectAllPokemons)
   const pokemonStatus = useSelector((state) => state.pokemons.status)
-  // const error = useSelector((state) => state.pokemons.error)
+  const error = useSelector((state) => state.pokemons.error)
   console.log(pokemons)
 
   useEffect(() => {
     if (pokemonStatus === 'idle') {
-      dispatch(fetchPokemons())
+      dispatch(fetchPokemons(10))
     }
   }, [pokemonStatus, dispatch])
 
@@ -79,6 +79,8 @@ export default function Pokedex(props) {
           </div>
         )
     )
+  } else if (pokemonStatus === 'failed') {
+    pokedex = <div>{error}</div>
   }
 
   return (

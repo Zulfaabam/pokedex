@@ -16,9 +16,9 @@ const initialState = pokemonsAdapter.getInitialState({
 
 export const fetchPokemons = createAsyncThunk(
   'pokemons/fetchPokemons',
-  async (thunkAPI) => {
+  async (limit) => {
     const res = await axios
-      .get('https://pokeapi.co/api/v2/pokemon', { params: { limit: 151 } })
+      .get('https://pokeapi.co/api/v2/pokemon', { params: { limit: limit } })
       .then((res) => res.data.results)
       .then((results) => {
         return Promise.all(results.map((res) => axios.get(res.url)))
