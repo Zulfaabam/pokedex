@@ -19,7 +19,7 @@ export default function Pokedex() {
 
   useEffect(() => {
     if (pokemonStatus === 'idle') {
-      dispatch(fetchPokemons(898))
+      dispatch(fetchPokemons(10))
     }
   }, [pokemonStatus, dispatch])
 

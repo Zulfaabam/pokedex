@@ -33,47 +33,54 @@ export default function Pokemon() {
   const pokemon = useSelector((state) => selectPokemonById(state, pokemonId))
   // console.log(pokemonsById)
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setLoading(true)
-  //     try {
-  //       const response = await axios.get(
-  //         `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
-  //       )
-  //       if (response.status === 200) {
-  //         setPokemon(response.data)
-  //         setLoading(false)
-  //       }
-  //     } catch (err) {
-  //       setLoading(true)
-  //       setError(err)
-  //     }
-  //   }
-  //   fetchData()
-  // }, [pokemonId])
-  // console.log(pokemonId)
-  // console.log(pokemon)
-
-  const pic = `https://cdn.traction.one/pokedex/pokemon/${pokemonId}.png`
-
   if (!pokemon) {
     return (
-      <section className="loading">
+      <section className="not-found">
         <h2>There was an error loading your data!</h2>
-        <Link to="/pokedex" className="link">
-          Go back to Pokedex
-        </Link>
+        <div className="menu-box">
+          <Link to="/pokedex" className="link app-link">
+            Go back to Pokedex
+          </Link>
+        </div>
       </section>
     )
   }
 
-  // if (loading) {
-  //   return (
-  //     <div className="loading">
-  //       <SpinnerCircular color="#2769be" />
-  //     </div>
-  //   )
-  // }
+  const pic = `https://cdn.traction.one/pokedex/pokemon/${pokemonId}.png`
+  const types = pokemon.types.map((item, index) => (
+    <p
+      key={index}
+      style={{
+        backgroundColor: `#${TYPE_COLORS[item.type.name]}`,
+        color: 'white',
+        padding: '.5rem',
+        width: 'fit-content',
+        borderRadius: '5px',
+        display: 'inline-block',
+        marginRight: '.5rem',
+      }}
+    >
+      {item.type.name}
+    </p>
+  ))
+  const abilities = pokemon.abilities.map((item, index) => (
+    <p key={index}>
+      {item.is_hidden
+        ? `${item.ability.name} (Hidden)`
+        : `${item.ability.name},`}
+    </p>
+  ))
+  const height = pokemon.height
+  const weight = pokemon.weight
+  const stats = pokemon.stats.map((item, index) => (
+    <p key={index}>
+      <strong>{item.stat.name}: </strong>
+      {item.base_stat}
+    </p>
+  ))
+  const moves = pokemon.moves.map((item, index) => (
+    <p key={index}>{item.move.name}</p>
+  ))
 
   return (
     <div className="pokemon grid-container">
@@ -86,64 +93,28 @@ export default function Pokemon() {
           <h2>Pokedex Data</h2>
           <div>
             <strong>Type: </strong>
-            {pokemon.types === undefined
-              ? 'not found'
-              : pokemon.types.map((item, index) => (
-                  <p
-                    key={index}
-                    style={{
-                      backgroundColor: `#${TYPE_COLORS[item.type.name]}`,
-                      color: 'white',
-                      padding: '.5rem',
-                      width: 'fit-content',
-                      borderRadius: '5px',
-                      display: 'inline-block',
-                      marginRight: '.5rem',
-                    }}
-                  >
-                    {item.type.name}
-                  </p>
-                ))}
+            {types}
           </div>
           <div>
             <strong>Ability: </strong>
-            {pokemon.abilities === undefined
-              ? 'Loading...'
-              : pokemon.abilities.map((item, index) => (
-                  <p key={index}>
-                    {item.is_hidden
-                      ? `${item.ability.name} (Hidden)`
-                      : `${item.ability.name},`}
-                  </p>
-                ))}
+            {abilities}
           </div>
           <p>
             <strong>Height: </strong>
-            {pokemon.height / 10} m
+            {height / 10} m
           </p>
           <p>
-            <strong>Weight:</strong> {pokemon.weight / 10} kg
+            <strong>Weight:</strong> {weight / 10} kg
           </p>
         </div>
         <div className="data-box base-stats-wrapper">
           <h2>Base Stats</h2>
-          {pokemon.stats === undefined
-            ? 'Loading...'
-            : pokemon.stats.map((item, index) => (
-                <p key={index}>
-                  <strong>{item.stat.name}: </strong>
-                  {item.base_stat}
-                </p>
-              ))}
+          {stats}
         </div>
       </div>
       <div className="data-box moves-wrapper">
         <h2>Moves</h2>
-        {pokemon.moves === undefined
-          ? 'Loading...'
-          : pokemon.moves.map((item, index) => (
-              <p key={index}>{item.move.name}</p>
-            ))}
+        {moves}
       </div>
     </div>
   )
