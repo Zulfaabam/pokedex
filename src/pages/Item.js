@@ -1,7 +1,6 @@
 import React from 'react'
 // import axios from 'axios'
 import { useParams } from 'react-router'
-import './Item.css'
 // import { SpinnerCircular } from 'spinners-react'
 import { useSelector } from 'react-redux'
 import { selectItemById } from '../store/items/itemsSlice'

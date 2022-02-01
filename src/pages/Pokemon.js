@@ -1,6 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import './Pokemon.css'
 // import { SpinnerCircular } from 'spinners-react'
 import { useSelector } from 'react-redux'
 import { selectPokemonById } from '../store/pokemons/pokemonsSlice'

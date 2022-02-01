@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './Items.css'
 import { NavLink } from 'react-router-dom'
 import { SpinnerCircular } from 'spinners-react'
 import { useDispatch, useSelector } from 'react-redux'

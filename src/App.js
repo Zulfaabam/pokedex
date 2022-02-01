@@ -1,12 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Homepage from './components/Homepage'
-import Pokedex from './components/Pokedex'
+import Homepage from './pages/Homepage'
+import Pokedex from './pages/Pokedex'
 import BottomNav from './components/BottomNav'
-import Items from './components/Items'
-import About from './components/About'
-import Pokemon from './components/Pokemon'
-import Item from './components/Item'
+import Items from './pages/Items'
+import About from './pages/About'
+import Pokemon from './pages/Pokemon'
+import Item from './pages/Item'
 // import { createBrowserHistory } from 'history'
 
 // const history = createBrowserHistory()
