@@ -1,34 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
+// import axios from 'axios'
 import { useParams } from 'react-router'
 import './Item.css'
-import { SpinnerCircular } from 'spinners-react'
+// import { SpinnerCircular } from 'spinners-react'
+import { useSelector } from 'react-redux'
+import { selectItemById } from '../store/items/itemsSlice'
+import { Link } from 'react-router-dom'
 
 export default function Item() {
-  const [item, setItem] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState()
   const { itemId } = useParams()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://pokeapi.co/api/v2/item/${itemId}`
-        )
-        if (response.status === 200) {
-          setItem(response.data)
-          setLoading(false)
-        }
-      } catch (err) {
-        setLoading(true)
-        setError(err)
-      }
-    }
-    fetchData()
-  }, [itemId])
-  console.log(itemId)
+  const item = useSelector((state) => selectItemById(state, itemId))
   console.log(item)
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `https://pokeapi.co/api/v2/item/${itemId}`
+  //       )
+  //       if (response.status === 200) {
+  //         setItem(response.data)
+  //         setLoading(false)
+  //       }
+  //     } catch (err) {
+  //       setLoading(true)
+  //       setError(err)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [itemId])
+
+  if (!item) {
+    return (
+      <section className="loading">
+        <h2>There was an error loading your data!</h2>
+        <Link to="/items" className="link">
+          Go back to Item Dex
+        </Link>
+      </section>
+    )
+  }
 
   const pic = item.sprites === undefined ? 'Loading...' : item.sprites.default
   const desc =
@@ -40,17 +52,13 @@ export default function Item() {
       ? 'Loading...'
       : item.effect_entries[0].effect
 
-  if (loading) {
-    return (
-      <div className="loading">
-        <SpinnerCircular color="#2769be" />
-      </div>
-    )
-  }
-
-  if (error) {
-    return <p>There was an error loading your data!</p>
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="loading">
+  //       <SpinnerCircular color="#2769be" />
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="item grid-container">

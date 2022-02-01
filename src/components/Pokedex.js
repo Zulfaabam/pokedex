@@ -8,15 +8,14 @@ import {
   fetchPokemons,
 } from '../store/pokemons/pokemonsSlice'
 
-export default function Pokedex(props) {
-  const { history } = props
+export default function Pokedex() {
+  // const { history } = props
   const [filter, setFilter] = useState('')
 
   const dispatch = useDispatch()
   const pokemons = useSelector(selectAllPokemons)
   const pokemonStatus = useSelector((state) => state.pokemons.status)
   const error = useSelector((state) => state.pokemons.error)
-  console.log(pokemons)
 
   useEffect(() => {
     if (pokemonStatus === 'idle') {
@@ -50,7 +49,6 @@ export default function Pokedex(props) {
   }
 
   let pokedex
-
   if (pokemonStatus === 'loading') {
     pokedex = (
       <div className="loading">
@@ -64,7 +62,7 @@ export default function Pokedex(props) {
           <div key={pokemon.id} className="pokedex-box">
             <NavLink
               to={`/pokedex/${pokemon.id}`}
-              onClick={() => history.push(`/pokedex/${pokemon.id}`)}
+              // onClick={() => history.push(`/pokedex/${pokemon.id}`)}
             >
               <img src={pokemon.sprites.front_default} alt={pokemon.name} />
             </NavLink>
@@ -72,7 +70,7 @@ export default function Pokedex(props) {
             <NavLink
               to={`/pokedex/${pokemon.id}`}
               className="link pkmn-name"
-              onClick={() => history.push(`/pokedex/${pokemon.id}`)}
+              // onClick={() => history.push(`/pokedex/${pokemon.id}`)}
             >
               {pokemon.name}
             </NavLink>

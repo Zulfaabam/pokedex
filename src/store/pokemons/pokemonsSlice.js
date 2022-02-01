@@ -30,6 +30,16 @@ export const fetchPokemons = createAsyncThunk(
   }
 )
 
+// export const fetchPokemonDetail = createAsyncThunk(
+//   'pokemons/fetchPokemonDetails',
+//   async (pokemonId) => {
+//     const res = await axios
+//       .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+//       .then((res) => res.data)
+//     return res
+//   }
+// )
+
 const pokemonsSlice = createSlice({
   name: 'pokemons',
   initialState,

@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 import { useParams } from 'react-router'
 import './Pokemon.css'
-import { SpinnerCircular } from 'spinners-react'
+// import { SpinnerCircular } from 'spinners-react'
+import { useSelector } from 'react-redux'
+import { selectPokemonById } from '../store/pokemons/pokemonsSlice'
+import { Link } from 'react-router-dom'
 
 const TYPE_COLORS = {
   bug: 'B1C12E',
@@ -26,56 +28,52 @@ const TYPE_COLORS = {
 }
 
 export default function Pokemon() {
-  const [pokemon, setPokemon] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState()
   const { pokemonId } = useParams()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      try {
-        const response = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
-        )
-        if (response.status === 200) {
-          setPokemon(response.data)
-          setLoading(false)
-        }
-      } catch (err) {
-        setLoading(true)
-        setError(err)
-      }
-    }
+  const pokemon = useSelector((state) => selectPokemonById(state, pokemonId))
+  // console.log(pokemonsById)
 
-    fetchData()
-    // axios
-    //   .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
-    //   .then((res) => {
-    //     setLoading(false)
-    //     setPokemon(res.data)
-    //   })
-    //   .catch((err) => {
-    //     setError(err)
-    //   })
-  }, [pokemonId])
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setLoading(true)
+  //     try {
+  //       const response = await axios.get(
+  //         `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
+  //       )
+  //       if (response.status === 200) {
+  //         setPokemon(response.data)
+  //         setLoading(false)
+  //       }
+  //     } catch (err) {
+  //       setLoading(true)
+  //       setError(err)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [pokemonId])
   // console.log(pokemonId)
   // console.log(pokemon)
 
   const pic = `https://cdn.traction.one/pokedex/pokemon/${pokemonId}.png`
-  const { types, stats, moves, abilities } = pokemon
 
-  if (loading) {
+  if (!pokemon) {
     return (
-      <div className="loading">
-        <SpinnerCircular color="#2769be" />
-      </div>
+      <section className="loading">
+        <h2>There was an error loading your data!</h2>
+        <Link to="/pokedex" className="link">
+          Go back to Pokedex
+        </Link>
+      </section>
     )
   }
 
-  if (error) {
-    return <p>There was an error loading your data!</p>
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="loading">
+  //       <SpinnerCircular color="#2769be" />
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="pokemon grid-container">
@@ -88,9 +86,9 @@ export default function Pokemon() {
           <h2>Pokedex Data</h2>
           <div>
             <strong>Type: </strong>
-            {types === undefined
+            {pokemon.types === undefined
               ? 'not found'
-              : types.map((item, index) => (
+              : pokemon.types.map((item, index) => (
                   <p
                     key={index}
                     style={{
@@ -109,9 +107,9 @@ export default function Pokemon() {
           </div>
           <div>
             <strong>Ability: </strong>
-            {abilities === undefined
+            {pokemon.abilities === undefined
               ? 'Loading...'
-              : abilities.map((item, index) => (
+              : pokemon.abilities.map((item, index) => (
                   <p key={index}>
                     {item.is_hidden
                       ? `${item.ability.name} (Hidden)`
@@ -129,9 +127,9 @@ export default function Pokemon() {
         </div>
         <div className="data-box base-stats-wrapper">
           <h2>Base Stats</h2>
-          {stats === undefined
+          {pokemon.stats === undefined
             ? 'Loading...'
-            : stats.map((item, index) => (
+            : pokemon.stats.map((item, index) => (
                 <p key={index}>
                   <strong>{item.stat.name}: </strong>
                   {item.base_stat}
@@ -141,9 +139,11 @@ export default function Pokemon() {
       </div>
       <div className="data-box moves-wrapper">
         <h2>Moves</h2>
-        {moves === undefined
+        {pokemon.moves === undefined
           ? 'Loading...'
-          : moves.map((item, index) => <p key={index}>{item.move.name}</p>)}
+          : pokemon.moves.map((item, index) => (
+              <p key={index}>{item.move.name}</p>
+            ))}
       </div>
     </div>
   )

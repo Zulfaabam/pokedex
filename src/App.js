@@ -7,13 +7,13 @@ import Items from './components/Items'
 import About from './components/About'
 import Pokemon from './components/Pokemon'
 import Item from './components/Item'
-import { createBrowserHistory } from 'history'
+// import { createBrowserHistory } from 'history'
 
-const history = createBrowserHistory()
+// const history = createBrowserHistory()
 
 function App() {
   return (
-    <Router history={history}>
+    <Router>
       <div className="app">
         <Routes>
           <Route path="/" element={<Homepage />} />

@@ -5,10 +5,8 @@ import { SpinnerCircular } from 'spinners-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectAllItems, fetchItems } from '../store/items/itemsSlice'
 
-export default function Items(props) {
-  const { history } = props
-  // const [data, setData] = useState([])
-  // const [loading, setLoading] = useState(false)
+export default function Items() {
+  // const { history } = props
   const [filter, setFilter] = useState('')
 
   const dispatch = useDispatch()
@@ -21,7 +19,7 @@ export default function Items(props) {
       dispatch(fetchItems(10))
     }
   }, [dispatch, itemStatus])
-  console.log(items)
+  // console.log(items)
 
   const handleSearchChange = (e) => {
     setFilter(e.target.value)
@@ -41,14 +39,14 @@ export default function Items(props) {
           <div key={item.id} className="items-box">
             <NavLink
               to={`/items/${item.id}`}
-              onClick={() => history.push(`/items/${item.id}`)}
+              // onClick={() => history.push(`/items/${item.id}`)}
             >
               <img src={item.sprites.default} alt={item.name} />
             </NavLink>
             <NavLink
               to={`/items/${item.id}`}
               className="link items-name"
-              onClick={() => history.push(`/items/${item.id}`)}
+              // onClick={() => history.push(`/items/${item.id}`)}
             >
               {item.name.replace('-', ' ')}
             </NavLink>
