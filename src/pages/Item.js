@@ -5,12 +5,13 @@ import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { selectItemById } from '../store/items/itemsSlice'
 import { Link } from 'react-router-dom'
+// import { useDispatch } from 'react-redux'
 
 export default function Item() {
   const { itemId } = useParams()
+  // const dispatch = useDispatch()
 
   const item = useSelector((state) => selectItemById(state, itemId))
-  // console.log(item)
 
   if (!item) {
     return (

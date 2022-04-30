@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { SpinnerCircular } from 'spinners-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectAllItems, fetchItems } from '../store/items/itemsSlice'
+import { addToWishlist, clearWishlist } from '../store/wishlist/wishlistSlice'
 
 export default function Items() {
   // const { history } = props
@@ -15,7 +16,7 @@ export default function Items() {
 
   useEffect(() => {
     if (itemStatus === 'idle') {
-      dispatch(fetchItems(200))
+      dispatch(fetchItems(10))
     }
   }, [dispatch, itemStatus])
   // console.log(items)
@@ -49,6 +50,7 @@ export default function Items() {
             >
               {item.name.replace('-', ' ')}
             </NavLink>
+            <button onClick={() => dispatch(addToWishlist(item))}>add</button>
           </div>
         )
     )
@@ -68,6 +70,7 @@ export default function Items() {
         />
       </header>
       <div className="items-container">{itemdex}</div>
+      <button onClick={() => dispatch(clearWishlist())}>clear wishlist</button>
     </div>
   )
 }
